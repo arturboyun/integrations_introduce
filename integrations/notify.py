@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from contrib import Alert
+from contrib import Alert, Telegram
 
 
 class NotifyBase(ABC):
@@ -29,3 +29,12 @@ class MSTeamsIntegration(NotifyBase):
 
     def send_alert(self, alert: Alert):
         print(f"Teams send_message: message={alert.message}, fields={alert.fields}")
+
+
+class TelegramIntegration(NotifyBase):
+
+    def send_message(self, text: str):
+        Telegram.send_message(12345678, text)
+
+    def send_alert(self, alert: Alert):
+        Telegram.send_message(12345678, f"message={alert.message}, fields={alert.fields}")

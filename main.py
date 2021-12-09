@@ -1,5 +1,5 @@
 from contrib import Alert
-from integrations.notify import SlackIntegration, MSTeamsIntegration
+from integrations.notify import SlackIntegration, MSTeamsIntegration, TelegramIntegration
 from integrations.siem import QRadar, Splunk
 
 
@@ -14,12 +14,14 @@ def run_siem_enrichment(alert):
 def send_alert(alert):
     slack = SlackIntegration()
     ms_teams = MSTeamsIntegration()
+    telegram = TelegramIntegration()
 
     # slack.send_message('test slack message')
     # ms_teams.send_message('test ms_teams message')
 
     slack.send_alert(alert)
     ms_teams.send_alert(alert)
+    telegram.send_alert(alert)
 
 
 def main():
