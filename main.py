@@ -12,9 +12,9 @@ def run_siem_enrichment(alert):
 
 
 def send_alert(alert):
-    slack = SlackIntegration()
-    ms_teams = MSTeamsIntegration()
-    telegram = TelegramIntegration()
+    slack = SlackIntegration('test_url_slack')
+    ms_teams = MSTeamsIntegration('test_url_ms_teams')
+    telegram = TelegramIntegration('123456789')
 
     # slack.send_message('test slack message')
     # ms_teams.send_message('test ms_teams message')
